@@ -1,0 +1,19 @@
+{
+  "name": "wasm-arcade",
+  "version": "1.0.0",
+  "description": "WasmArcade web app with Typescript, Node.js, NestJS, Next.js and WebAssembly.",
+  "license": "ISC",
+  "author": "Gustavo Rafael Schmidt",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "exec": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
