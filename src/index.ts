@@ -1,41 +1,24 @@
-// variáveis e tipos
-console.log("1- Variáveis e tipos\n");
-let nome: string = "Gustavo Rafael Schmidt";
-let idade: number = 20;
-let salario: number = 1700;
-let usuarioAtivo: boolean = true;
+// D1 · ter 20/10 · 1–2h — Ambiente e tipos básicos
+// Desafio: Escreva funções tipadas que recebem uma lista de títulos de jogos e devolvem estatísticas (total, maior título, títulos em ordem alfabética).
 
-console.log(`Nome: ${nome}\nIdade: ${idade}\nSalário: ${salario}\nAtivo: ${usuarioAtivo}`);
-
-// corrigir erros de tipo
-// errado
-// let idade2: number = "20";
-console.log("\n2- Corrigir erros de tipo\n");
-let idade2: number = 20;
-
-// array de números
-console.log("\n3- Array de números\n");
-let notas: number[] = [8, 7.5, 9, 10];
-notas.push(9.5);
-
-console.log(notas);
-console.log(`Quantidade de notas: ${notas.length}`);
-
-// inferência
-console.log("\n4- Inferência - deixar o TS deduzir o tipo da variável\n");
-let nomeMenina = "Leti";
-// erro: o erro acontece pois não é possível atribuir um número a uma variável com a tipagem definida previamente como string
-// nomeMenina = 2;
-console.log(`Leti é: ${typeof(nomeMenina)}`);
-
-// any e unknown
-console.log("\n5- Any e unknow\n");
-
-let um: any = "teste";
-let dois: unknown = "oLá";
-
-console.log(um.toUpperCase());
-
-if(typeof dois === "string"){
-    console.log(dois.toUpperCase());
+type EstatisticasJogos = {
+    total: number;
+    maiorTitulo: string;
+    titulosOrdenados: string[];
 };
+
+function retornaEstatisticasJogos(nomeJogos: string[]): EstatisticasJogos{
+    const total: number = 2;
+    const maiorTitulo: string = "Grand Theft Auto VI";
+    const titulosOrdenados: string[] = ["Grand Theft Auto III", "Grand Theft Auto IV", "Grand Theft Auto V", "Grand Theft Auto VI"]
+
+    const estatisticasJogos = {
+        total,
+        maiorTitulo,
+        titulosOrdenados,
+    }
+
+    return estatisticasJogos;
+}
+
+console.log(retornaEstatisticasJogos(["Grand Theft Auto III", "Grand Theft Auto IV"]));
