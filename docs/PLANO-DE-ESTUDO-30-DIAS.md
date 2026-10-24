@@ -67,11 +67,22 @@ Ao fim da fase você terá uma API REST de catálogo de jogos em Node puro com T
 
 **Desafio:** crie `wasm-arcade/playground`, inicie o projeto npm, instale o TypeScript e configure o `tsconfig` em modo strict. Escreva funções tipadas que recebem uma lista de títulos de jogos e devolvem estatísticas (total, maior título, títulos em ordem alfabética).
 
-- [ ] `npx tsc` compila sem erros com `strict: true`
-- [ ] Nenhum `any` no código
-- [ ] O JS gerado roda com `node` a partir de `dist/`
+- [x] `npx tsc` compila sem erros com `strict: true`
+- [x] Nenhum `any` no código
+- [x] O JS gerado roda com `node` a partir de `dist/`
 
 **Me mostra:** o `tsconfig.json`, o código e a saída da execução.
+
+**✅ Concluído em 24/10/2026. Aprendizados:**
+
+1. **O tipo tem que falar a verdade.** `lista[0]` numa lista vazia vale `undefined`. Com `noUncheckedIndexedAccess` ligado no `tsconfig`, o TS passa a avisar disso, e o tipo vira `string | undefined`.
+2. **Confere o ovo antes de fazer o bolo.** O TS lê o código de cima para baixo, como uma receita. A checagem `if (x === undefined)` tem que vir antes do primeiro uso de `x`. Depois dela, o TS "estreita" o tipo para `string` (narrowing).
+3. **O TS só estreita o que você testa.** Checar `lista.length === 0` não convence o TS de que `lista[0]` existe. Tem que testar a própria variável.
+4. **Os tipos são uma corrente de canos.** Se um cano vira `string | undefined`, os seguintes também precisam aceitar `undefined`, ou alguém trata o caso no meio do caminho.
+5. **Cozinha e garçom.** A função que calcula sempre devolve o resultado e não usa `console.log`. Quem chama decide o que mostrar.
+6. **`sort` muda a lista original.** É preciso ordenar uma cópia (`[...lista]`): a xerox da lista, não a estante do amigo.
+7. **Lista vazia ≠ lista com texto vazio.** `[]` não tem nada; `[""]` tem 1 item, que é um texto vazio.
+8. **Ler erro do compilador:** `src/index.ts(45,9)` quer dizer linha 45, coluna 9. A mensagem diz o que não encaixa com o quê.
 
 ### D2 · qua 21/10 · 1–2h — Modelando dados com tipos
 
